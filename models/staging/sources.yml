@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: thelook_ecommerce
+    database: bigquery-public-data
+    schema: thelook_ecommerce
+    description: "TheLook e-commerce public dataset from Google BigQuery"
+    tables:
+      - name: events
+        description: "User clickstream events — page views, add to cart, purchases"
+      - name: users
+        description: "Registered user profiles with demographic and acquisition data"
+      - name: orders
+        description: "Order headers with status and fulfillment timestamps"
+      - name: order_items
+        description: "Line-level order data linking products to orders"
+      - name: products
+        description: "Product catalog with pricing, category, and brand"

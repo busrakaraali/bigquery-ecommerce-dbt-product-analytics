@@ -1,0 +1,80 @@
+version: 2
+
+models:
+  - name: stg_events
+    description: "Cleaned clickstream events with nulls removed and columns renamed"
+    columns:
+      - name: event_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        tests:
+          - not_null
+      - name: event_type
+        tests:
+          - not_null
+      - name: event_at
+        tests:
+          - not_null
+
+  - name: stg_users
+    description: "Cleaned user profiles with derived age group field"
+    columns:
+      - name: user_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: email
+        tests:
+          - not_null
+      - name: age_group
+        tests:
+          - not_null
+
+  - name: stg_orders
+    description: "Cleaned orders with boolean status flags"
+    columns:
+      - name: order_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        tests:
+          - not_null
+      - name: status
+        tests:
+          - not_null
+
+  - name: stg_order_items
+    description: "Cleaned order line items linked to products and orders"
+    columns:
+      - name: order_item_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        tests:
+          - not_null
+      - name: product_id
+        tests:
+          - not_null
+
+  - name: stg_products
+    description: "Cleaned product catalog with margin calculations"
+    columns:
+      - name: product_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: product_name
+        tests:
+          - not_null
+      - name: retail_price
+        tests:
+          - not_null
